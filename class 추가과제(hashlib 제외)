@@ -1,0 +1,64 @@
+class Member():
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
+
+    def display(self):
+        print("이름: ", self.name)
+        print("아이디: ", self.username)
+
+class Post():
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
+
+    def display(self):
+        print("아이디: ", self.author)
+        print("제목: ", self.title)
+        print("내용: ", self.content)
+
+
+# --------------- input 으로 값 받고 리스트에 추가 ----------------
+members = []
+
+num_members = 3
+for _ in range(num_members):
+    name = input("name: ")
+    username = input("username: ")
+    password = input("password: ")
+
+    member = Member(name, username, password)
+    members.append(member)
+    member.display()
+
+
+# --------------- input 으로 값 받고 리스트에 추가 ----------------
+posts = []
+
+for member in members:
+    num_posts = 3
+    for _ in range(num_posts):
+        title = input("title: ")
+        content = input("content: ")
+        author = member.username
+
+        write = Post(title, content, author)
+        posts.append(write)
+        write.display()
+
+
+# --------------- 작성자별 글 제목 ----------------
+for member in members:
+    print(f"작성자: {member.username}")
+    author_posts = [post.title for post in posts if post.author == member.username]
+    for title in author_posts:
+        print("제목:", title)
+
+
+# --------------- 특정글자가 포함된 글 제목 ----------------
+print("우산이 포함된 글 제목:")
+umbrella = [post.title for post in posts if "우산" in post.content]
+for title in umbrella:
+    print("제목:", title)
