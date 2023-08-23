@@ -1,0 +1,65 @@
+import random
+
+list_a = ["가위", "바위", "보"]
+win = 0
+tie = 0
+lose = 0
+
+while True:
+    try:
+        while True:
+            choose = random.choice(list_a)
+            rps = input("가위 바위 보! ")
+            if rps != "가위" and rps != "바위" and rps != "보":
+                print("가위 바위 보 중 하나로 입력해주세요.")
+                continue
+            elif choose == "보":
+                if rps == "가위":
+                    print("제가 졌습니다!")
+                    win += 1
+                elif rps == "보":
+                    print("비겼습니다!")
+                    tie += 1
+                elif rps == "바위":
+                    print("제가 이겼습니다!")
+                    lose += 1
+                print(f'저는 {choose}를 냈습니다')
+                break
+            elif choose == "가위":
+                if rps == "바위":
+                    print("제가 졌습니다!")
+                    win += 1
+                elif rps == "가위":
+                    print("비겼습니다!")
+                    tie += 1
+                elif rps == "보":
+                    print("제가 이겼습니다!")
+                    lose += 1
+                print(f'저는 {choose}를 냈습니다')
+                break
+            elif choose == "바위":
+                if rps == "보":
+                    print("제가 졌습니다!")
+                    win += 1
+                elif rps == "바위":
+                    print("비겼습니다!")
+                    tie += 1
+                elif rps == "가위":
+                    print("제가 이겼습니다!")
+                    lose += 1
+                print(f'저는 {choose}를 냈습니다')
+                break
+        print(f"win : {win}회, tie : {tie}회, lose : {lose}회")
+
+        while True:
+            answer = input("게임을 다시 시작하기(Y/N) ")
+            if answer != "Y" and answer != "y" and answer != "N" and answer != "n":
+                print("Y/N 로 입력해주세요 ")
+            elif answer == "Y" or answer == "y":
+                print("게임을 다시 시작합니다!")
+                break
+            elif answer == "N" or answer == "n":
+                print("게임을 종료합니다.")
+                raise
+    except RuntimeError:
+        break
