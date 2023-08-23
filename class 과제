@@ -1,0 +1,86 @@
+class Member():
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
+
+    def display(self):
+        print("이름:", self.name)
+        print("아이디:", self.username)
+
+class Post():
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
+
+    def display(self):
+        print("아이디:", self.author.username)
+        print("제목:", self.title)
+        print("내용:", self.content)
+
+# ----------------- 유저 ----------------
+users = [
+    ("유림", "yr_01", "0101"),
+    ("유정", "yj_02", "0202"),
+    ("유빈", "yb_03", "0303")
+    ]
+
+# --------------- append ----------------
+members = []
+id = []
+for user in users :
+    name, username, password = user
+    member = Member(name, username, password)
+    members.append(member)   
+    author = member.username
+    id.append(member.username)
+   
+
+# --------------- name, username만 출력 ----------------
+for mem in members:
+    member.display()
+
+# ------------ name 만 출력 --------------
+for member in members:
+    print("사용자 이름:", member.name)
+    
+# ----------------- 글 ----------------
+writes = [
+    ("안녕하세요", "반갑습니다", id[0]),
+    ("비가오네요", "다들 우산 챙기셨나요?", id[0]),
+    ("우산이 없어서", "편의점에서 샀는데 너무 비싸요ㅠ", id[0]),
+    ("안녕하세요!", "잘 부탁드려요!", id[1]),
+    ("여긴 날씨가 습해요!", "곧 비가 오려나 봐요!", id[1]),
+    ("이제 비 오네요!", "나갈 때 다들 우산 챙기세요!", id[1]),
+    ("안녕하세요~", "자주 봐요~", id[2]),
+    ("여기도 비와요~", "우산 챙겨야겠어요~", id[2]),
+    ("편의점 우산이요~", "비싸더라고요~", id[2]),
+    ]
+
+# --------------- append ----------------
+posts = []
+for write in writes:
+    title, content, author_username = write
+    author = next(member for member in members if member.username == author_username)
+    post = Post(title, content, author)
+    posts.append(post)
+
+# Display the information for each post
+for post in posts:
+    post.display()
+
+# ------------ title 만 출력 --------------
+for member in members:
+        for post in posts:
+            if post.author == member:
+                print(member.username +"의 글 제목:", post.title)
+
+# # ------------ 특정 단어 포함된 게시글 제목만 출력 --------------
+for post in posts:
+    if "우산" in post.content :
+        print("우산이 포함된 글 제목:", post.title)
+
+for post in posts:
+    if "편의점" in post.content :
+        print("편의점이 포함된 글 제목:", post.title)
