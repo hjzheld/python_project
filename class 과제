@@ -1,0 +1,139 @@
+class Member():
+    def __init__(self, name, username, password):
+        self.name = name
+        self.username = username
+        self.password = password
+
+    def display(self):
+        print("이름:", self.name)
+        print("아이디:", self.username)
+
+class Post():
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
+
+    def display(self):
+        print("아이디:", self.author)
+        print("제목:", self.title)
+        print("내용:", self.content)
+
+# ----------------- 유저 1 ----------------
+name = "유림"
+username = "yr_01"
+password = "0101"
+member1 = Member(name, username, password)
+member1.display()
+
+# ----------------- 유저 2 ----------------
+name = "유정"
+username = "yj_02"
+password = "0202"
+member2 = Member(name, username, password)
+member2.display()
+
+# ----------------- 유저 3 ----------------
+name = "유빈"
+username = "yb_03"
+password = "0303"
+member3= Member(name, username, password)
+member3.display()
+
+# --------------- append ----------------
+members = []
+members.append(member1) 
+members.append(member2)  
+members.append(member3)
+
+# ------------ name 만 출력 --------------
+for member in members:
+    print("이름:", member.name)
+
+        
+# ----------------- 유저 1 글 ----------------
+title = "안녕하세요"
+content = "반갑습니다"
+author = member1.username
+write1 = Post(title, content, author)
+write1.display()
+
+title = "비가오네요"
+content = "다들 우산 챙기셨나요?"
+author = member1.username
+write2 = Post(title, content, author)
+write2.display()
+
+title = "우산이 없어서"
+content = "편의점에서 샀는데 너무 비싸요ㅠ"
+author = member1.username
+write3 = Post(title, content, author)
+write3.display()
+
+# ----------------- 유저 2 글----------------
+title = "안녕하세요!"
+content = "잘 부탁드려요!"
+author = member2.username
+write4 = Post(title, content, author)
+write4.display()
+
+title = "여긴 날씨가 습해요!"
+content = "곧 비가 오려나 봐요!"
+author = member2.username
+write5 = Post(title, content, author)
+write5.display()
+
+title = "이제 비 오네요!"
+content = "나갈 때 다들 우산 챙기세요!"
+author = member2.username
+write6 = Post(title, content, author)
+write6.display()
+
+# ----------------- 유저 3 글----------------
+title = "안녕하세요~"
+content = "자주 봐요~"
+author = member3.username
+write7 = Post(title, content, author)
+write7.display()
+
+title = "여기도 비와요~"
+content = "우산 챙겨야겠어요~"
+author = member3.username
+write8 = Post(title, content, author)
+write8.display()
+
+title = "편의점 우산이요~"
+content = "많이 비싸더라고요~"
+author = member3.username
+write9 = Post(title, content, author)
+write9.display()
+
+# --------------- append ----------------
+posts = []
+posts.append(write1) 
+posts.append(write2) 
+posts.append(write3)
+posts.append(write4) 
+posts.append(write5) 
+posts.append(write6) 
+posts.append(write7) 
+posts.append(write8) 
+posts.append(write9) 
+
+# ------------ title 만 출력 --------------
+for post in posts:
+    if post.author == member1.username:
+        print(member1.username +"의 글 제목:", post.title)
+    elif post.author == member2.username:
+        print(member2.username +"의 글 제목:", post.title)
+    elif post.author == member3.username:
+        print(member3.username +"의 글 제목:", post.title)
+
+# ------------ 특정 단어 포함된 게시글 제목만 출력 --------------
+for post in posts:
+    if "우산" in post.content :
+        print("우산이 포함된 글 제목:", post.title)
+
+for post in posts:
+    if "편의점" in post.content :
+        print("편의점이 포함된 글 제목:", post.title)
