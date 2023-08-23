@@ -38,7 +38,7 @@ for user in users :
 
 # --------------- name, username만 출력 ----------------
 for mem in members:
-    member.display()
+    mem.display()
 
 # ------------ name 만 출력 --------------
 for member in members:
